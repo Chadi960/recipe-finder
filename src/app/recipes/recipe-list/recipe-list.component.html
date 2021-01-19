@@ -1,0 +1,15 @@
+<div class="">
+    <div class="d-flex align-items-center">
+        <button [routerLink]="['new']" class="btn btn-success">New Recipe</button>
+        <button (click)="getRecipe(inputData)" class="btn btn-success ml-2">Find Recipe</button>
+        <input #inputData type="text" class="form-control-md ml-2">
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12">
+        <div class="list-group">
+            <app-recipe-item *ngFor="let recipeEl of recipes; index as i" [index] = "i" [recipe] = "recipeEl"></app-recipe-item>
+        </div>
+    </div>
+</div>
