@@ -1,52 +1,66 @@
-<form>
-    <div class="form-row">
-        <div class="form-group col-6">
-            <label for="inputRecipeName">Recipe name</label>
-            <input type="text" class="form-control" id="inputRecipeName" placeholder="Recipe">
+<div class="container">
+    <form [formGroup]="rForm" (ngSubmit)="onSumbit(rForm.value)">
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="inputRecipeName">Recipe name</label>
+                <input type="text" class="form-control" id="inputRecipeName" formControlName="name" placeholder="Recipe">
+                <small
+                    *ngIf="(!rForm.get('name').valid && rForm.get('name').touched)"
+                    class="form-text"> Please enter a recipe name!</small>
+            </div>
+            <div class="form-group col-6">
+                <label for="recipeType">Type</label>
+                <select id="inputState" formControlName="type" class="form-control">
+                    <option selected>main course</option>
+                    <option>side dish</option>
+                    <option>dessert</option>
+                    <option>appetizer</option>
+                    <option>salad</option>
+                    <option>breakfast</option>
+                    <option>soup</option>
+                    <option>beverage</option>
+                    <option>sauce</option>
+                    <option>drink</option>
+                </select>
+            </div>
         </div>
-        <div class="form-group col-6">
-            <label for="recipeType">Type</label>
-            <select id="inputState" class="form-control">
-                <option selected>main course</option>
-                <option>side dish</option>
-                <option>dessert</option>
-                <option>appetizer</option>
-                <option>salad</option>
-                <option>breakfast</option>
-                <option>soup</option>
-                <option>beverage</option>
-                <option>sauce</option>
-                <option>drink</option>
-            </select>
+    
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="includeIngredients">Include Ingredients</label>
+                <input type="text" class="form-control" id="includeIngredients" formControlName="ingredients" placeholder="Ingredients">
+                <small
+                    *ngIf="!rForm.get('ingredients').valid"
+                    class="form-text"> Please enter a valid ingredient!</small>
+            </div>
+            <div class="form-group col-6">
+                <label for="excludeIngredients">Exclude Ingredients</label>
+                <input type="text" class="form-control" id="excludeIngredients" formControlName="excludedIngredients" placeholder="Excluded Ingredients">
+                <small
+                    *ngIf="!rForm.get('excludedIngredients').valid"
+                    class="form-text"> Please enter a valid ingredient!</small>
+            </div>
         </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-gorup col-6">
-            <label for="includeIngredients">Ingredients</label>
-            <input type="text" class="form-control" id="includeIngredients" placeholder="Ingredients">
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="foodIntolerance">Intolerance</label>
+                <input type="text" class="form-control" id="foodIntolerance" formControlName="intolerance" placeholder="dairy, egg, gluten...">
+                <small
+                    *ngIf="!rForm.get('intolerance').valid"
+                    class="form-text"> Please enter a valid name!</small>
+            </div>
+            <div class="form-group col-6">
+                <label for="dietType">Diet</label>
+                <select id="dietType" formControlName="diet" class="form-control">
+                    <option selected></option>
+                    <option>vegan</option>
+                    <option>vegetarian</option>
+                    <option>lacto vegetarian</option>
+                    <option>ovo vegetarian</option>
+                    <option>pescetarian</option>
+                </select>
+            </div>
         </div>
-        <div class="form-gorup col-6">
-            <label for="excludeIngredients">Exclude Ingredients</label>
-            <input type="text" class="form-control" id="excludeIngredients" placeholder="Excluded Ingredients">
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-6">
-            <label for="foodIntolerance">Intolerance</label>
-            <input type="text" class="form-control" id="foodIntolerance" placeholder="dairy, egg, gluten...">
-        </div>
-        <div class="form-group col-6">
-            <label for="dietType">Diet</label>
-            <select id="dietType" class="form-control">
-                <option selected></option>
-                <option>vegan</option>
-                <option>vegetarian</option>
-                <option>lacto vegetarian</option>
-                <option>ovo vegetarian</option>
-                <option>pescetarian</option>
-            </select>
-        </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Search</button>
-</form>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
