@@ -1,6 +1,4 @@
-import { Ingredients } from "src/app/shared/ingredient.model";
-
-export interface UserRequirement {
+export class UserRequirement {
   name: string;
   type: string;
   ingredients: string;
