@@ -1,8 +1,16 @@
 import { Ingredients } from '../shared/ingredient.model';
 
 export class Recipe {
+    public id: number;
     public name: string;
     public description: string;
+    public nutritionalInfo: {
+        calories: string,
+        protein: string,
+        fat: string,
+        carbs: string,
+        readyInMinutes: number,
+        servings: number}
     public imagePath: string;
     public Ingredients: Ingredients[];
 

@@ -11,7 +11,10 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   recipeDetail: Recipe;
-  constructor(private route: ActivatedRoute , private recipeservice: RecipeService ,private shoppinglistservice: ShoppingListService) { }
+  constructor(private route: ActivatedRoute, 
+              private recipeservice: RecipeService, 
+              private shoppinglistservice: ShoppingListService,
+              ) { }
 
   ngOnInit(): void {
     let id: number;
