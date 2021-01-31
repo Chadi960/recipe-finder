@@ -12,9 +12,7 @@ export class RecipeFormComponent implements OnInit {
 
   rForm: FormGroup;
   userInput: UserRequirement;
-  test: string = "";
   constructor(private recipeservice: RecipeService){
-    //this.userInput = new UserRequirement();
   }
 
   ngOnInit(): void {
@@ -29,7 +27,6 @@ export class RecipeFormComponent implements OnInit {
       'intolerance': new FormControl("", Validators.pattern("^([^0-9]*)$")),
       'diet': new FormControl(""),
     });
-
   }
 
   onSumbit(post){
@@ -42,8 +39,8 @@ export class RecipeFormComponent implements OnInit {
 
     this.recipeservice.getRecipeByUserReq(this.userInput)
       .subscribe((data)=>{
-        console.log(data);
-      })
+        this.recipeservice.insertRecipe(data.results)
+      });
 
     this.rForm.reset();
   }

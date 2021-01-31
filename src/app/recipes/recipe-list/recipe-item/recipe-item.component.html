@@ -3,10 +3,11 @@
     [routerLink]="[index]"
     routerLinkActive="active">
     <div class="float-left">
-        <h4>{{recipe.name}}</h4>
-        <p>{{recipe.description}}</p>
+        <h4>{{recipe.title}}</h4>
+        <p>Calories: {{recipe.calories}} - Protein: {{recipe.protein}}</p>
+        <p>Carbs: {{recipe.carbs}} - Fat: {{recipe.fat}}</p>
     </div>
     <span class="float-right">
-        <img [src]="recipe.imagePath" alt="" class="img-fluid" style="max-height: 50px;">
+        <img [src]="recipe.image" alt="" class="img-fluid" style="max-height: 50px;">
     </span>
 </a>

@@ -7,10 +7,9 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
-
 const appRoutes: Routes = [
-  //Since an empty path is a prefix to all other pathes, we need to specify that the path must only be empty for it to redirect
-    {path: '', redirectTo: '/recipes', pathMatch: 'full' },
+    //Since an empty path is a prefix to all other pathes, we need to specify that the path must only be empty for it to redirect
+    {path: '', redirectTo: '/recipes', pathMatch: 'full'},
     {path: 'recipes', component: RecipesComponent, children: [
     {path: '', component: RecipeStartComponent},
     {path: 'new', component: RecipeEditComponent},

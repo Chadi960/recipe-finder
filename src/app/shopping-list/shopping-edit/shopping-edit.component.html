@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <form>
+        <form [formGroup]="eForm">
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
@@ -8,7 +8,8 @@
                       type="text" 
                       id="name" 
                       class="form-control"
-                      #inputName>
+                      #inputName
+                      formControlName="name">
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
@@ -16,12 +17,13 @@
                       type="number" 
                       id="amount" 
                       class="form-control"
-                      #inputAmount>
+                      #inputAmount
+                      formControlName="amount">
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <button type="button" class="btn btn-success mr-1" (click)="onAdd()">Add</button>
+                    <button type="button" class="btn btn-success mr-1" (ngclick)="onAdd(eForm.value)">Add</button>
                     <button type="button" class="btn btn-danger mr-1">Delete</button>
                     <button type="button" class="btn btn-primary mr-1">Clear</button>
                 </div>

@@ -1,21 +1,21 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { Ingredients } from '../shared/ingredient.model';
+import { Injectable } from '@angular/core';
 import { UserRequirement } from './recipe-list/recipe-form/UserReqirement.model';
 import { Recipe } from './recipe.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { AppConfig } from '../config/AppConfig';
 
 @Injectable()
 export class RecipeService {
 
-  constructor(private httpclient: HttpClient){}
+  constructor(private httpclient: HttpClient, private config: AppConfig){}
 
-   private recipes: Recipe[] = [
-        new Recipe('A Test Recipe','This is simply a test', 'https://hips.hearstapps.com/delish/assets/17/39/1506456246-delish-healthy-chicken-casserole-1.jpg', [new Ingredients('chicken', 4), new Ingredients('Mayo', 2)]),
-        new Recipe('A Second Test','This is a second test', 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/12/10/0/WU1712H_Cauliflower-Mac-and-Cheese_s4x3.jpg.rend.hgtvcom.616.462.suffix/1580140849133.jpeg', [new Ingredients('Cauliflower', 2)])
-      ]
+   private BaseURI = this.config.setting['PathAPI'];
 
-    recipeItem = new EventEmitter<Recipe>();
+   private recipes: Recipe[] = [];
+
+    //To let RecipeListComponent know the list is updated
+    recipeChanged= new Subject<Recipe[]>();
 
     getRecipes(){
         return this.recipes.slice();
@@ -26,7 +26,8 @@ export class RecipeService {
     }
 
     insertRecipe(recipe){
-      this.recipes.push(recipe);
+      this.recipes.push(...recipe);
+      this.recipeChanged.next(this.recipes.slice());
     }
 
     getRecipeByUserReq(userReq: UserRequirement): Observable<any>{
@@ -37,8 +38,9 @@ export class RecipeService {
           .set('cuisine', encodeURIComponent(' african, chinese, japanese, korean, vietnamese, thai, indian, british, irish, french, italian, mexican, spanish, middle eastern, jewish, american, cajun, southern, greek, german, nordic, eastern european'))
           .set('includeIngredients', encodeURIComponent(userReq.ingredients))
           .set('excludeIngredients', encodeURIComponent(userReq.excludedIngredients))
-          .set('intolerances', encodeURIComponent(userReq.intolerance));
+          .set('intolerances', encodeURIComponent(userReq.intolerance))
+          .set('minCalories', '0');
 
-      return this.httpclient.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex", {params: params1});
+      return this.httpclient.get(this.BaseURI + "searchComplex", { params: params1});
     }
 }

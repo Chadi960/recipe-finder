@@ -1,24 +1,15 @@
-import { Ingredients } from '../shared/ingredient.model';
-
 export class Recipe {
     public id: number;
-    public name: string;
-    public description: string;
-    public nutritionalInfo: {
-        calories: string,
-        protein: string,
-        fat: string,
-        carbs: string,
-        readyInMinutes: number,
-        servings: number}
-    public imagePath: string;
-    public Ingredients: Ingredients[];
+    public image: string;
+    public title: string;
+    public calories: number;
+    public protein: string;
+    public fat: string;
+    public carbs: string
 
-    constructor(name: string, desc: string, imagePath: string, Ing?: Ingredients[]) {
-        this.name = name;
-        this.description = desc;
-        this.imagePath = imagePath;
-        this.Ingredients = Ing;
+    constructor(id: number, image: string, title: string ){
+        this.id = id;
+        this.image = image;
+        this.title = title;
     }
-
 }

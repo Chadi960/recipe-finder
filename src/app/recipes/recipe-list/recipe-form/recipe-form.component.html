@@ -3,13 +3,13 @@
         <div class="form-row">
             <div class="form-group col-6">
                 <label for="inputRecipeName">Recipe name</label>
-                <input type="text" class="form-control" id="inputRecipeName" formControlName="name" placeholder="Recipe">
+                <input type="text" class="form-control" id="inputRecipeName" formControlName="name" placeholder="ie: burger">
                 <small
                     *ngIf="(!rForm.get('name').valid && rForm.get('name').touched)"
                     class="form-text"> Please enter a recipe name!</small>
             </div>
             <div class="form-group col-6">
-                <label for="recipeType">Type</label>
+                <label for="recipeType">Type <small>(Optional)</small></label>
                 <select id="inputState" formControlName="type" class="form-control">
                     <option selected>main course</option>
                     <option>side dish</option>
@@ -27,14 +27,14 @@
     
         <div class="form-row">
             <div class="form-group col-6">
-                <label for="includeIngredients">Include Ingredients</label>
-                <input type="text" class="form-control" id="includeIngredients" formControlName="ingredients" placeholder="Ingredients">
+                <label for="includeIngredients">Include Ingredients <small>(Optional)</small></label>
+                <input type="text" class="form-control" id="includeIngredients" formControlName="ingredients" placeholder="ie: lettuce, onions..">
                 <small
                     *ngIf="!rForm.get('ingredients').valid"
                     class="form-text"> Please enter a valid ingredient!</small>
             </div>
             <div class="form-group col-6">
-                <label for="excludeIngredients">Exclude Ingredients</label>
+                <label for="excludeIngredients">Exclude Ingredients <small>(Optional)</small></label>
                 <input type="text" class="form-control" id="excludeIngredients" formControlName="excludedIngredients" placeholder="Excluded Ingredients">
                 <small
                     *ngIf="!rForm.get('excludedIngredients').valid"
@@ -43,14 +43,14 @@
         </div>
         <div class="form-row">
             <div class="form-group col-6">
-                <label for="foodIntolerance">Intolerance</label>
+                <label for="foodIntolerance">Intolerance <small>(Optional)</small></label>
                 <input type="text" class="form-control" id="foodIntolerance" formControlName="intolerance" placeholder="dairy, egg, gluten...">
                 <small
                     *ngIf="!rForm.get('intolerance').valid"
                     class="form-text"> Please enter a valid name!</small>
             </div>
             <div class="form-group col-6">
-                <label for="dietType">Diet</label>
+                <label for="dietType">Diet <small>(Optional)</small></label>
                 <select id="dietType" formControlName="diet" class="form-control">
                     <option selected></option>
                     <option>vegan</option>
