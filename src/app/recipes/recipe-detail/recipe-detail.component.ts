@@ -50,8 +50,8 @@ export class RecipeDetailComponent implements OnInit {
   //     })
    }
 
-  // toShoppingList(){
-  //   //this.shoppinglistservice.setIngredients(this.recipeDetail.Ingredients);
-  // }
+   toShoppingList(){
+     //this.shoppinglistservice.setIngredients(this.recipeDetail.Ingredients);
+   }
 
 }
