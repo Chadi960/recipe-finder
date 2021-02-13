@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AppConfig } from './config/AppConfig';
+import { RecipeDetailResolver } from './recipes/recipe-detail/recipe-detail-resolver.service';
+import { RecipeService } from './recipes/recipe.service';
 
 
 @NgModule({
@@ -42,7 +44,7 @@ import { AppConfig } from './config/AppConfig';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [AppConfig, ShoppingListService, {
+  providers: [AppConfig, ShoppingListService, RecipeDetailResolver, RecipeService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

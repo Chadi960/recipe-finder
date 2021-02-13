@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserRequirement } from './recipe-list/recipe-form/UserReqirement.model';
 import { Recipe } from './recipe.model';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
 import { AppConfig } from '../config/AppConfig';
 
